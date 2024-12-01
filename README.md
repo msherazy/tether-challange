@@ -25,6 +25,13 @@
    ```bash
    npm install
    ```
+3. **Environment Variables ( Will be shared on the email)**
+
+```
+COINGECKO_API_URL=
+RETRY_DELAY=
+MAX_RETRIES=
+```
 
 ---
 
@@ -160,25 +167,37 @@ Historical Prices:
 ## Project Structure
 
 ```
-.
+Project/
+├── .idea/
 ├── db/
-│   └── prices/
-│       ├── bitfield
-│       ├── data
-│       ├── oplog
-│       └── tree
+│   ├── prices/
+│   │   ├── bitfield/
+│   │   ├── data/
+│   │   ├── oplog/
+│   │   └── tree/
+├── node_modules/  (library root)
 ├── src/
-│   ├── client.js
-│   ├── server.js
+│   ├── constants/
+│   │   └── messages.js
 │   ├── data/
 │   │   └── index.js
 │   ├── db/
 │   │   └── index.js
 │   └── utils/
-│       └── index.js
+│       ├── client.js
+│       └── server.js
+├── utils/
+├── .editorconfig
+├── .env
+├── .eslintrc
+├── .gitignore
+├── .prettierignore
+├── .prettierrc
+├── eslint.config.mjs
 ├── package.json
 ├── package-lock.json
 └── README.md
+
 ```
 
 ---
@@ -203,5 +222,3 @@ Historical Prices:
 - **Error Logs:** Check server and client logs for detailed error messages.
 
 ---
-
-**Enjoy using the cryptocurrency data gathering application!**

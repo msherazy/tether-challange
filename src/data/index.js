@@ -4,7 +4,18 @@ const axios = require('axios');
 const { storeData } = require('../db');
 const { sleep } = require('../../utils');
 const messages = require('../constants/messages');
-const { logger } = require('../utils');
+const { createLogger, transports, format } = require('winston');
+
+const logger = createLogger({
+	level: 'info',
+	format: format.combine(
+		format.timestamp(),
+		format.printf(
+			({ timestamp, level, message }) => `${timestamp} [${level}]: ${message}`,
+		),
+	),
+	transports: [new transports.Console()],
+});
 
 const COINGECKO_API_URL =
 	process.env.COINGECKO_API_URL || 'https://api.coingecko.com/api/v3';

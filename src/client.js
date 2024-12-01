@@ -17,7 +17,7 @@ const main = async () => {
 	await dht.ready();
 
 	const serverPubKey = Buffer.from(
-		'99cf82cc7de552ff81d0d86f0ad0439196603ea2e6a1ab888d87dbda18c3c780', // Replace with server's public key
+		'3fb36f6cc81792211a0cf16e2c0aca4e649b4d12900ab77455ac8547e22acf7c', // Replace with server's public key
 		'hex',
 	);
 
