@@ -1,0 +1,33 @@
+{
+	"name": "tether-challenge",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"@hyperswarm/rpc": "^3.3.2",
+		"axios": "^1.7.8",
+		"hyperbee": "^2.20.7",
+		"hypercore": "^10.38.1",
+		"hyperdht": "^6.20.1",
+		"node-schedule": "^2.1.1",
+		"winston": "^3.17.0"
+	},
+	"scripts": {
+		"format": "prettier --write .",
+		"start:server": "node src/server.js",
+		"start:client": "node src/client.js",
+		"lint": "eslint .",
+		"start:db": "hyperdht --bootstrap --host 127.0.0.1 --port 30001"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3.2.0",
+		"@eslint/js": "^9.16.0",
+		"eslint": "^9.16.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-import": "^2.31.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"globals": "^15.12.0",
+		"prettier": "^3.4.1"
+	}
+}

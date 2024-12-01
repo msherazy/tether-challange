@@ -1,0 +1,63 @@
+'use strict';
+
+const RPC = require('@hyperswarm/rpc');
+const DHT = require('hyperdht');
+const crypto = require('crypto');
+const path = require('path');
+const messages = require('./constants/messages');
+
+const DHT_STORAGE_PATH = path.join(__dirname, '../', '../dht_storage');
+
+const main = async () => {
+	const dht = new DHT({
+		keyPair: DHT.keyPair(crypto.randomBytes(32)),
+		bootstrap: [{ host: '127.0.0.1', port: 30001 }],
+		storage: DHT_STORAGE_PATH, // Uncomment if hyperdht supports the 'storage' option
+	});
+	await dht.ready();
+
+	const serverPubKey = Buffer.from(
+		'99cf82cc7de552ff81d0d86f0ad0439196603ea2e6a1ab888d87dbda18c3c780', // Replace with server's public key
+		'hex',
+	);
+
+	// Setup RPC client
+	const rpc = new RPC({ dht });
+	const client = rpc.connect(serverPubKey);
+
+	try {
+		// Request latest prices
+		const latestPricesPayload = { pairs: ['bitcoin', 'ethereum'] };
+		const latestPricesRaw = await client.request(
+			'getLatestPrices',
+			Buffer.from(JSON.stringify(latestPricesPayload), 'utf-8'),
+		);
+		const latestPrices = JSON.parse(latestPricesRaw.toString('utf-8'));
+		console.log('Latest Prices:', latestPrices);
+
+		// Request historical prices
+		const toTimestamp = Date.now();
+		const fromTimestamp = toTimestamp - 3600000; // 1 hour ago
+
+		const historicalPricesPayload = {
+			pairs: ['bitcoin', 'ethereum'],
+			from: fromTimestamp,
+			to: toTimestamp,
+		};
+		const historicalPricesRaw = await client.request(
+			'getHistoricalPrices',
+			Buffer.from(JSON.stringify(historicalPricesPayload), 'utf-8'),
+		);
+		const historicalPrices = JSON.parse(historicalPricesRaw.toString('utf-8'));
+		console.log('Historical Prices:', historicalPrices);
+	} catch (error) {
+		console.error(`${messages.ERROR_DURING_RPC_CALLS} ${error}`);
+	} finally {
+		// Clean up
+		await client.end();
+		await rpc.destroy();
+		await dht.destroy();
+	}
+};
+
+main().catch(console.error);
