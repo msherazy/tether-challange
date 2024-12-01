@@ -4,7 +4,7 @@ const RPC = require('@hyperswarm/rpc');
 const DHT = require('hyperdht');
 const crypto = require('crypto');
 const path = require('path');
-const messages = require('./constants/messages');
+const messages = require('../constants/messages');
 
 const DHT_STORAGE_PATH = path.join(__dirname, '../', '../dht_storage');
 
@@ -17,7 +17,7 @@ const main = async () => {
 	await dht.ready();
 
 	const serverPubKey = Buffer.from(
-		'99cf82cc7de552ff81d0d86f0ad0439196603ea2e6a1ab888d87dbda18c3c780', // Replace with server's public key
+		'a10aa875346e13ae0d885f3bbca54cfd913c7af43419161502149a2fd6ac8540', // Replace with server's public key
 		'hex',
 	);
 
