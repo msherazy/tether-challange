@@ -14,8 +14,8 @@
 	},
 	"scripts": {
 		"format": "prettier --write .",
-		"start:server": "node src/server.js",
-		"start:client": "node src/client.js",
+		"start:server": "node src/services/server.js",
+		"start:client": "node src/services/client.js",
 		"lint": "eslint .",
 		"start:db": "hyperdht --bootstrap --host 127.0.0.1 --port 30001"
 	},

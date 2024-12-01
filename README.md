@@ -167,37 +167,20 @@ Historical Prices:
 ## Project Structure
 
 ```
-Project/
-├── .idea/
-├── db/
-│   ├── prices/
-│   │   ├── bitfield/
-│   │   ├── data/
-│   │   ├── oplog/
-│   │   └── tree/
-├── node_modules/  (library root)
-├── src/
-│   ├── constants/
-│   │   └── messages.js
-│   ├── data/
-│   │   └── index.js
-│   ├── db/
-│   │   └── index.js
-│   └── utils/
-│       ├── client.js
-│       └── server.js
-├── utils/
-├── .editorconfig
-├── .env
-├── .eslintrc
-├── .gitignore
-├── .prettierignore
-├── .prettierrc
-├── eslint.config.mjs
-├── package.json
-├── package-lock.json
-└── README.md
-
+tether-challenge/
+├── db/                    # Database files
+├── node_modules/          # Dependencies
+├── src/                   # Application source code
+│   ├── constants/         # Application constants
+│   ├── data/              # Data-related logic
+│   ├── db/                # Database-related logic
+│   ├── services/          # Client and server-side service logic
+│   ├── utils/             # Helper functions
+│   └── index.js           # Main entry point for the application
+├── .env                   # Environment variables
+├── .gitignore             # Files to ignore in version control
+├── package.json           # Project metadata and dependencies
+└── README.md              # Documentation for the project
 ```
 
 ---

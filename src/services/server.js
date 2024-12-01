@@ -2,8 +2,8 @@
 const RPC = require('@hyperswarm/rpc');
 const DHT = require('hyperdht');
 const crypto = require('crypto');
-const { initializeDB, db, getLatestData } = require('./db');
-const { collectAndStoreData } = require('./data');
+const { initializeDB, db, getLatestData } = require('../db');
+const { collectAndStoreData } = require('../data');
 const { join } = require('path');
 
 const DHT_STORAGE_PATH = join(__dirname, '../', '../dht_storage');

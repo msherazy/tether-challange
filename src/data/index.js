@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 const { storeData } = require('../db');
-const { sleep } = require('../../utils');
+const { sleep } = require('../utils');
 const messages = require('../constants/messages');
 const { createLogger, transports, format } = require('winston');
 
